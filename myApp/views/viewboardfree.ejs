@@ -14,6 +14,7 @@
             height: 1px;
             background: rgb(240, 234, 237);
         }
+        
     </style>
     <body>
         <center>
@@ -33,11 +34,10 @@
                             </table> <br><br>
                             <a href="/board?number=1" class="btn btn-default">돌아가기</a>
                             <hr class="hr"><br></table>
-                    </table> <br><br>
-                    <hr class="hr"> <br>
-                    <table border="1" bordercolor="#ccc" width="700" height="150">
+                    </table>
                     <% for (var i = 0; i < comment.length; i++) { %>
                         <% if(comment[i].Num == Num){ %>
+                            <table border="1" bordercolor="#ccc" width="700" height="150">
                         <tr>
                             <th style="text-align: center" bgcolor="#F4F2F4">작성자</th>
                         <td colspan="2"> &nbsp <%= comment[i].id %> </th>
@@ -46,15 +46,17 @@
                         <tr>
                             <td colspan="6" rowspan="10">&nbsp <%= comment[i].comment %></th>
                         <tr>
+                        </table><br>
                             <% } %>
                     <% } %>
-                        </table> <br><br>
                 <h3 style="text-align:left "> &nbsp&nbsp&nbsp&nbsp&nbsp 답변</h3> 
+                <form action="viewboardfree" method="post">
                 <div class="mb-2 f">
-                        <textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+                        <textarea style="resize: none;" class="form-control" rows="5" name="comment" id="content" placeholder="내용을 입력해 주세요" ></textarea>
                 </div> <br>
-                <a href="post.html" class="btn btn-default">작성</a>
+                <td><input type="submit" class="btn btn-default" value="작성"></td>
                 </div>
+            </form>
         </center>
     </body>
 </html>
