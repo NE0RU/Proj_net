@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>게시판</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <style>
+        .hr{
+            border: 0;
+            height: 1px;
+            background: rgb(240, 234, 237);
+        }
+    </style>
+    <body>
+        <center>
+                <div class="box1">
+                    <h2>게시판</h2> <br>
+                    <table border="1" bordercolor="#ccc" width="700" height="150">
+                            <th style="text-align: center" bgcolor="#F4F2F4">제목</th>
+                            <td colspan="5"> &nbsp <%= list[Num].title %> </th>
+                            <tr>
+                                <th style="text-align: center" bgcolor="#F4F2F4">작성자</th>
+                            <td colspan="2"> &nbsp <%= list[Num].id %> </th>
+                                <th style="text-align: center" bgcolor="#F4F2F4">등록일</th>
+                                <td colspan="2"> &nbsp <%= list[Num].date %> </th>
+                            <tr>
+                                <td colspan="6" rowspan="10">&nbsp <%= list[Num].content %>            </th>
+                            <tr>
+                            </table> <br><br>
+                            <a href="/board?number=1" class="btn btn-default">돌아가기</a>
+                            <hr class="hr"><br></table>
+                    </table> <br><br>
+                    <hr class="hr"> <br>
+                    <table border="1" bordercolor="#ccc" width="700" height="150">
+                    <% for (var i = 0; i < comment.length; i++) { %>
+                        <% if(comment[i].Num == Num){ %>
+                        <tr>
+                            <th style="text-align: center" bgcolor="#F4F2F4">작성자</th>
+                        <td colspan="2"> &nbsp <%= comment[i].id %> </th>
+                            <th style="text-align: center" bgcolor="#F4F2F4">등록일</th>
+                            <td colspan="2"> &nbsp <%= comment[i].date %> </th>
+                        <tr>
+                            <td colspan="6" rowspan="10">&nbsp <%= comment[i].comment %></th>
+                        <tr>
+                            <% } %>
+                    <% } %>
+                        </table> <br><br>
+                <h3 style="text-align:left "> &nbsp&nbsp&nbsp&nbsp&nbsp 답변</h3> 
+                <div class="mb-2 f">
+                        <textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+                </div> <br>
+                <a href="post.html" class="btn btn-default">작성</a>
+                </div>
+        </center>
+    </body>
+</html>

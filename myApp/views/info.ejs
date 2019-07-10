@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <title>회원정보</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-form">
+        <form>
+            <center> <h2>내정보</h2> </center>
+            <table class="table table-hover">
+                <tr>
+                    <td>아이디</td>
+                    <td>:</td>
+                    <td><%= id %></td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td>:</td>
+                    <td><%= name %></td>
+                </tr>
+            </table>
+            <br>
+            <tr>
+                <td><input type="button" value="메인페이지" onclick="location.href='/'" class="submit-btn"></td>
+            </tr>
+        </form>
+    </div>
+</body>
+</html>

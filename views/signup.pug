@@ -1,0 +1,14 @@
+html
+    body
+        h3 My Favorite DramaList
+        ul
+            each val in list
+                li= `${val.id}(${val.pw})`
+        div ------------------------------------------
+        h4 드라마 추가
+        form(action = "http://localhost:8080", method="POST")
+            p
+                input(type="text", name="id", placeholder="id")
+                input(type="text", name="pw", placeholder="pw")
+            p
+                input(type="submit", value="회원 가입")

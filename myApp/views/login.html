@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>로그인</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+</head>
+
+<body>
+  
+  <div class="login-form">
+    <form>
+        <center> <h2>로그인</h2> </center>
+      <input type="text" name="email" class="text-field" placeholder="아이디"><br>
+      <input type="password" name="password" class="text-field" placeholder="비밀번호"><br>
+      <input type="submit" value="로그인" class="submit-btn">
+    </form>
+
+    <div class="links">
+      <a href="signup.html">아직 회원가입을 안하셨나요?</a>
+    </div>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>login</title>
+</head>
+<body>
+  <% if(session){ %>
+    <h3>이미 로그인 했습니다</h3>
+    <form action="logout" method="get">
+        <tr>
+            <td><input type="button" value="메인페이지" onclick="location.href='/'"></td>
+           <td><input type="submit" value="로그아웃"></td>
+        </tr>
+    </form>
+    <% } else{ %>
+    <h1>로그인</h1>
+    <form method="post" action="login">
+        <table>
+            <tr>
+                <td><label>ID : </label></td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td><label>PW : </label></td>
+                <td><input type="text" name="pw"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Login" name=""></td>
+                <td><input type="button" value="회원가입" onclick="location.href='/signup'"></td>
+                <td><input type="button" value="메인페이지" onclick="location.href='/'"></td>
+            </tr>
+        </table>
+    </form>
+    <% } %>
+</body>
+</html>

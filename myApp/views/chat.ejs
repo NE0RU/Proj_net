@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <META HTTP-EQUIV="refresh" CONTENT="1">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>게시판</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <center>
+            <div class="box1">
+                <h2>GSM 익명 채팅</h2>
+                <% for (var i = 0; i < chat.length; i++) { %>
+                <input type="text" class="form-control" rows="5" name="content" id="content" placeholder="<작성자> : <%= chat[i].id %> <작성일> : <%= chat[i].date %>" disabled>
+                <input type="text" class="form-control" rows="5" name="content" id="content" placeholder="<내용> : <%= chat[i].chat %>" disabled><br>
+                <% } %>
+                <form action="chat" method="post">
+                    <div>
+                        <input type="text" class="form-control" rows="5" name="chat" id="content" placeholder="댓글 작성">
+                    </div><br>
+                    <tr>
+                        <td><input type="submit" class="btn btn-sm btn-primary" value="댓글쓰기"></td>
+                        <td><input type="button" class="btn btn-sm btn-primary"value="나가기" onclick="location.href='/'"></td>
+                    </tr>
+                </form>
+        </center>
+    </body>
+</html>

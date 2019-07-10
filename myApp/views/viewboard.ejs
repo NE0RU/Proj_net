@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>게시판</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        </head>
+        <style>
+        body {            
+            padding-top: 70px;
+            padding-bottom: 30px;           
+        }
+        .btn-primary{
+            border:0px;
+        }
+        .a{
+            margin-left:90%;
+            margin-right:10px;
+        }
+        .b{
+            margin-left:0px;
+        }
+        </style>
+    </head>
+    <body>
+        <article>
+        <div class="container" role="main">
+            <h1>게시판</h1><br>
+            <form name="form" id="form" role="form">
+                <div class="mb-3">
+                    <label for="title">제목</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="<%= list[Num].title %>" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="reg_id">작성자</label>
+                    <input type="text" class="form-control" name="reg_id" id="reg_id" placeholder="<%= list[Num].id %>" disabled>
+                </div>
+                <div class="mb-3">
+                        <label for="tag">날짜</label>
+                        <input type="text" class="form-control" name="tag" id="tag" placeholder="<%= list[Num].date %>" disabled>
+                    </div>
+                <div class="mb-3">
+                    <label for="content">내용</label>
+                    <input type="text" class="form-control" rows="5" name="content" id="content" placeholder="<%= list[Num].content %>" disabled>
+                </div>
+            </form>
+            <h2>댓글</h2>
+            <% for (var i = 0; i < comment.length; i++) { %>
+                <% if(comment[i].Num == Num){ %>
+                    <input type="text" class="form-control" rows="5" name="content" id="content" placeholder="<작성자> : <%= comment[i].id %> <작성일> : <%= comment[i].date %>" disabled>
+                    <input type="text" class="form-control" rows="5" name="content" id="content" placeholder="<내용> : <%= comment[i].comment %>" disabled><br>
+                    <% } %>
+            <% } %>
+            <form action="viewboard" method="post">
+            <div>
+                <작성자> : <%= id %>
+            </div>
+            <div>
+                <input type="text" class="form-control" rows="5" name="comment" id="content" placeholder="댓글 작성">
+            </div><br>
+            <tr>
+                <td><input type="submit" class="btn btn-sm btn-primary" value="댓글쓰기"></td>
+                <td><input type="button" class="btn btn-sm btn-primary"value="뒤로가기" onclick="location.href='/board?number=1'"></td>
+            </tr>
+        </form>
+    </div>
+    <article>
+    </body>
+</html>

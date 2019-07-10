@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <title>로그인</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+</head>
+<body>
+  <% if(session){ %>
+    <div class="login-form">
+      <form method="get" action="logout">
+          <center> <h2>로그인 했습니다</h2> </center>
+          <tr>
+              <td><input type="button" value="메인페이지" onclick="location.href='/'" class="submit-btn"></td>
+             <td><input type="submit" value="로그아웃" class="submit-btn"></td>
+          </tr>
+      </form>
+    </div>
+    </form>
+    <% } else{ %>
+        <div class="login-form">
+          <form method="post" action="login">
+              <center> <h2>로그인</h2> </center>
+            <input type="text" name="id" class="text-field" placeholder="아이디"><br>
+            <input type="password" name="pw" class="text-field" placeholder="비밀번호"><br>
+            <input type="submit" value="로그인" class="submit-btn">
+            <input type="button" value="돌아가기" onclick="location.href='/'" class="submit-btn">
+          </form>
+          <div class="links">
+            <a href="/signup">아직 회원가입을 안하셨나요?</a>
+          </div>
+        </div>
+    <% } %>
+</body>
+</html>

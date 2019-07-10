@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>게시판</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <% if(session){ %>
+            <center>
+                <div class="box1">
+                    <h2>게시판</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td width = "50" >번호</td>
+                                <td width = "100" >제목</td>
+                                <td width = "100" >작성자</td>
+                                <td width = "200" >날짜</td>
+                            </tr>
+                        </thead>
+                    <% for (var i = 0; i < list.length; i++) { %>
+                            <tr>
+                                <td width = "50"><a href="/viewboard?number=<%= i %>"><%= i+1 %></a></td>
+                                <td width = "100"><a href="/viewboard?number=<%= i %>"><%= list[i].title %></a></td>
+                                <td width = "100"><a href="/viewboard?number=<%= i %>"><%= list[i].id %></a></td>
+                                <td width = "200"><a href="/viewboard?number=<%= i %>"><%= list[i].date %></a></td>
+                            </tr><br>
+                        <% } %>
+                    </table>
+                    <tr>
+                        <td><input type="button" value="글쓰기" class="btn btn-default" onclick="location.href='/addboard'"></td>
+                        <td><input type="button" value="돌아가기" class="btn btn-default" onclick="location.href='/'"></td>
+                    </tr>
+                </center>
+        <% }else{ %>
+        <center>
+            <div class="box1">
+                <h2>게시판</h2> <br>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td width = "50" >번호</td>
+                            <td width = "100" >제목</td>
+                            <td width = "100" >작성자</td>
+                            <td width = "200" >날짜</td>
+                        </tr>
+                    </thead>
+                <% if(Num == 1){ %>
+                <% for(var i = 0; i < 5; i++){ %>
+                    <tr>
+                        <td width = "50"><a href="/viewboardfree?number=<%= i %>"><%= i+1 %></a></td>
+                        <td width = "100"><a href="/viewboardfree?number=<%= i %>"><%= list[i].title %></a></td>
+                        <td width = "100"><a href="/viewboardfree?number=<%= i %>"><%= list[i].id %></a></td>
+                        <td width = "200"><a href="/viewboardfree?number=<%= i %>"><%= list[i].date %></a></td>  
+                    </tr><br>
+                    <% } %>
+                <% }else if(Num == 2){ %>
+                    <% for(var i = 5; i < list.length; i++){ %>
+                        <tr>
+                            <td width = "50"><a href="/viewboardfree?number=<%= i %>"><%= i+1 %></a></td>
+                            <td width = "100"><a href="/viewboardfree?number=<%= i %>"><%= list[i].title %></a></td>
+                            <td width = "100"><a href="/viewboardfree?number=<%= i %>"><%= list[i].id %></a></td>
+                            <td width = "200"><a href="/viewboardfree?number=<%= i %>"><%= list[i].date %></a></td>  
+                        </tr><br>
+                        <% } %>
+                <% } %>
+                </table>
+                <tr>
+                    <td><input type="button" value="글쓰기" class="btn btn-default" onclick="location.href='/addboardfree?number=<%= Num %>'"></td>
+                </tr>
+                <% if(Num) { %>
+                    <% for (var i = 1; i < list.length; i++){ %>
+                        <% if(i / 5 == 1){ %>
+                            <% Num = 2%>
+                        <% } %>
+                    <% } %>
+                <div class="text-center"> 
+                    <% for(var i=0; i < Num; i++){ %>
+                    <ul class="pagination">
+                        <li><a href="/board?number=<%= i+1 %>"><%= i+1 %></a></li>
+                    </ul>
+                    <% } %>
+                </div>
+                <% } %>
+                <tr>
+                    <td><input type="button" value="돌아가기" class="btn btn-default" onclick="location.href='/'"></td>
+                </tr>
+            </div>
+        </center>
+        <% } %>
+    </body>
+</html>
