@@ -42,7 +42,7 @@ router.post('/', function(req, res){
                 return;
             }if(result){
                 console.dir('성공');
-                res.redirect('viewboard?number=1');
+                res.redirect('viewboard?number='+Num+'');
             }
         });
     }
